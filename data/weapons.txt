@@ -1,0 +1,5 @@
+Pistol|8|40|0
+Baseball Bat|10|25|30
+Shotgun|18|15|90
+Katana|15|30|120
+Chainsaw|25|12|200
