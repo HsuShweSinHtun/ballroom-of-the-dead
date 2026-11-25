@@ -21,11 +21,23 @@ clang++ -std=c++17 -Iinclude src/*.cpp -o ballroom
 ./ballroom
 ```
 
-(`g++` works the same way.) **Windows:** use Windows Terminal with MinGW
-(`g++ -std=c++17 -Iinclude src/*.cpp -o ballroom.exe`) or CMake
-(`cmake -S . -B build` then `cmake --build build`, and run it from the project folder).
+(`g++` works the same way.) 
 
-Always run the game from the project folder, because it reads and writes `data/`.
+**Windows:** 
+use Windows Terminal (or PowerShell / Command Prompt on Windows 10+). Open it in the project folder, then pick ONE of these:
+
+MinGW-w64 (g++), the simplest:
+Install it (for example with MSYS2: https://www.msys2.org, then run pacman -S mingw-w64-ucrt-x86_64-gcc and add C:\msys64\ucrt64\bin to your PATH).
+Build and run:
+build.bat
+ballroom.exe
+Visual Studio (MSVC) with CMake, from the "Developer Command Prompt":
+cmake -S . -B build
+cmake --build build --config Release
+build\Release\ballroom.exe
+Visual Studio project: create an empty C++ Console App, add every file from src\ and include\, set C++ Language Standard to ISO C++17 and add include to Additional Include Directories.
+
+Always run the game from the project folder, because it reads and writes `data/`.If the colors or box lines look wrong, make sure you are using Windows Terminal or a Windows 10/11 console that supports ANSI colors.
 
 ### Terminal size
 
