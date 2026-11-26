@@ -1,0 +1,111 @@
+==========================================================================================
+  BALLROOM OF THE DEAD: A TEXT-BASED ZOMBIE SURVIVAL GAME IN C++
+  Project Proposal - Team 2
+==========================================================================================
+
+Team members
+  - Hsu Shwe Sin Htun   (ID: 12240198)
+  - Marco Martinelli    (ID: 12264642)
+
+Course: Object-Oriented Programming (C++)
+
+
+------------------------------------------------------------------------------------------
+1. PROJECT OVERVIEW
+------------------------------------------------------------------------------------------
+Ballroom of the Dead is a text-based zombie survival fighting game written in C++17 using
+Object-Oriented Programming. It runs entirely in the terminal with colored panels, arrow-key
+menus and typewriter-style text. The player is trapped in an abandoned ballroom hotel and
+must fight through five rooms (stages) and defeat the final boss, the Ballroom King.
+Player data, weapons, scores and reports are stored in plain text files.
+
+
+------------------------------------------------------------------------------------------
+2. OBJECTIVES
+------------------------------------------------------------------------------------------
+  - Build a complete, playable console game with menus and keyboard input.
+  - Apply OOP concepts clearly: classes, encapsulation, inheritance and polymorphism.
+  - Use text files to save, read, search and update game data.
+  - Generate a report and a leaderboard after every game.
+  - Keep the code organized in separate header (.h) and source (.cpp) files.
+
+
+------------------------------------------------------------------------------------------
+3. MAIN FEATURES
+------------------------------------------------------------------------------------------
+  Player registration   Register with a username. A returning player loads saved progress.
+  Turn-based combat     Each turn the player can Attack, Defend, use a Medkit or Run Away.
+  Zombie types          Walker, Runner, Brute and the boss (Ballroom King). Each has
+                        different health and attack strength.
+  Five stages           The Lobby, The Dance Floor, The Kitchen, The Balcony and The Grand
+                        Ballroom. Enemies get stronger with every stage.
+  Weapons and shop      Weapons have damage and durability and can break. Coins earned in
+                        fights buy weapons, medkits, armor plates and repairs.
+  Win / lose            The player wins by defeating the boss and loses when health
+                        reaches zero.
+  Save and continue     Progress is saved after every stage and on Save & Quit.
+  Report + leaderboard  A report is generated after every game, and the leaderboard shows
+                        the highest scores.
+
+
+------------------------------------------------------------------------------------------
+4. OOP CLASSES
+------------------------------------------------------------------------------------------
+  Player            Username, health, attack, defense, coins, score and progress.
+  Zombie            Base class (type, health, attack). Walker, Runner, Brute and
+                    BallroomKing inherit from it and override attack() (polymorphism).
+  Weapon            Name, damage and durability.
+  Inventory         Manages the player's weapons and medkits.
+  Game              Runs the main game loop (input, update, draw).
+  IState and the    Each screen of the game is its own class: TitleState, LoginState,
+  state classes     HubState, BattleState, ShopState, InventoryState, StatusState,
+                    InfoState and GameOverState. A StateMachine switches between them.
+                    BattleState handles stages, combat and zombie attacks; ShopState
+                    handles buying items.
+  ReportGenerator   Creates the game report and the leaderboard data.
+  FileManager       Reads and writes all text files.
+
+Other OOP ideas used: encapsulation (private data with getters and action methods),
+constructors, composition (Player has an Inventory, which holds Weapons), operator
+overloading (leaderboard sorting) and virtual functions.
+
+
+------------------------------------------------------------------------------------------
+5. FILE HANDLING (data/ folder)
+------------------------------------------------------------------------------------------
+  players.txt        Registration and saved progress     (search, update, add)
+  weapons.txt        Weapon names, damage, prices        (read)
+  game_history.txt   One line per completed game         (append)
+  leaderboard.txt    Best score per player               (read, sort, write)
+  reports.txt        Generated game reports              (append, read)
+
+If the data folder or a file is missing, the program creates it automatically.
+
+
+------------------------------------------------------------------------------------------
+6. REPORT CONTENTS
+------------------------------------------------------------------------------------------
+After every game the program automatically creates a report with: username, zombies
+defeated, stages completed, weapons used, total damage dealt, final health, total score,
+win or lose status and game duration. The report is shown on the game-over screen and saved
+to reports.txt.
+
+
+------------------------------------------------------------------------------------------
+7. TECHNICAL TOOLS
+------------------------------------------------------------------------------------------
+  Language      Standard C++ (C++17)
+  Compiler      g++ or clang++ (a Makefile, CMakeLists.txt and build.bat are included)
+  Interface     Terminal (console), no graphics library
+  Libraries     C++ standard library only (iostream, fstream, string, vector, ...)
+  Platforms     macOS, Linux and Windows
+  Structure     Separate .h and .cpp files for each class
+
+
+------------------------------------------------------------------------------------------
+8. EXPECTED OUTCOME
+------------------------------------------------------------------------------------------
+A complete, playable terminal game that saves player progress, generates a report after
+every game, and demonstrates functions, classes and objects, and file operations in C++.
+
+==========================================================================================
